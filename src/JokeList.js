@@ -13,6 +13,7 @@ class JokeList extends React.Component {
       jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]"),
       loading: false
     };
+    this.seenJokes = new Set(this.state.jokes.map(joke => joke.text));
     this.handleClick = this.handleClick.bind(this);
   }
   static defaultProps = {
@@ -26,23 +27,34 @@ class JokeList extends React.Component {
   }
 
   async getJokes() {
-    const url = "https://icanhazdadjoke.com/";
-    const headers = {
-      Accept: "application/json"
-    };
-    let jokes = [];
-    while (jokes.length < this.props.numJokesToGet) {
-      let res = await axios.get(url, { headers: headers });
-      jokes.push({ id: uuid(), text: res.data.joke, votes: 0 });
+    try {
+      const url = "https://icanhazdadjoke.com/ffd";
+      const headers = {
+        Accept: "application/json"
+      };
+      let jokes = [];
+      while (jokes.length < this.props.numJokesToGet) {
+        let res = await axios.get(url, { headers: headers });
+        let newJoke = res.data.joke;
+        if (!this.seenJokes.has(newJoke)) {
+          jokes.push({ id: uuid(), text: newJoke, votes: 0 });
+        }
+      }
+      this.setState(
+        st => ({
+          loading: false,
+          jokes: [...st.jokes, ...jokes]
+        }),
+        () =>
+          window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes))
+      );
+    } catch (e) {
+      console.log(e);
+      alert(
+        "Oops! It looks like there is a problem in the network. We are working on fixing that!"
+      );
+      this.setState({ loading: false });
     }
-    this.setState(
-      st => ({
-        loading: false,
-        jokes: [...st.jokes, ...jokes]
-      }),
-      () =>
-        window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes))
-    );
   }
 
   handleVote(id, delta) {
