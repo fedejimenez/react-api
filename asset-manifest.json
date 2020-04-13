@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-jokes/static/css/main.704f552c.chunk.css",
+    "main.css": "/react-jokes/static/css/main.db288070.chunk.css",
     "main.js": "/react-jokes/static/js/main.53f519ee.chunk.js",
     "main.js.map": "/react-jokes/static/js/main.53f519ee.chunk.js.map",
     "runtime-main.js": "/react-jokes/static/js/runtime-main.fee20fbf.js",
@@ -8,15 +8,15 @@
     "static/js/2.175cc416.chunk.js": "/react-jokes/static/js/2.175cc416.chunk.js",
     "static/js/2.175cc416.chunk.js.map": "/react-jokes/static/js/2.175cc416.chunk.js.map",
     "index.html": "/react-jokes/index.html",
-    "precache-manifest.ca9e70a443630534c6a048dcb067321c.js": "/react-jokes/precache-manifest.ca9e70a443630534c6a048dcb067321c.js",
+    "precache-manifest.62ae736ad756c516a8e5c6b43b41f6db.js": "/react-jokes/precache-manifest.62ae736ad756c516a8e5c6b43b41f6db.js",
     "service-worker.js": "/react-jokes/service-worker.js",
-    "static/css/main.704f552c.chunk.css.map": "/react-jokes/static/css/main.704f552c.chunk.css.map",
+    "static/css/main.db288070.chunk.css.map": "/react-jokes/static/css/main.db288070.chunk.css.map",
     "static/js/2.175cc416.chunk.js.LICENSE.txt": "/react-jokes/static/js/2.175cc416.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fee20fbf.js",
     "static/js/2.175cc416.chunk.js",
-    "static/css/main.704f552c.chunk.css",
+    "static/css/main.db288070.chunk.css",
     "static/js/main.53f519ee.chunk.js"
   ]
 }
