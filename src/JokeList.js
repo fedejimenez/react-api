@@ -3,12 +3,15 @@ import axios from "axios";
 import "./JokeList.css";
 import Joke from "./Joke";
 import uuid from "uuid/v4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLaugh } from "@fortawesome/free-solid-svg-icons";
 
 class JokeList extends React.Component {
   constructor() {
     super();
     this.state = {
-      jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]")
+      jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]"),
+      loading: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -34,6 +37,7 @@ class JokeList extends React.Component {
     }
     this.setState(
       st => ({
+        loading: false,
         jokes: [...st.jokes, ...jokes]
       }),
       () =>
@@ -54,10 +58,18 @@ class JokeList extends React.Component {
   }
 
   handleClick() {
-    this.getJokes();
+    this.setState({ loading: true }, this.getJokes);
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <div className="JokeList-spinner">
+          <FontAwesomeIcon icon={faLaugh} size="8x" spin />
+          <h1 className="JokeList-title">Loading...</h1>
+        </div>
+      );
+    }
     return (
       <div className="JokeList">
         <div className="JokeList-sidebar">
