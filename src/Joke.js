@@ -4,6 +4,13 @@ import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import "./Joke.css";
 
 class Joke extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      copySuccess: false
+    };
+  }
   getColor() {
     let votes = this.props.votes;
     if (votes >= 15) {
@@ -42,12 +49,29 @@ class Joke extends React.Component {
     }
   }
 
+  copyTextToClipboard = () => {
+    const el = this.textDiv;
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges(); // to deselect
+    this.setState({ copySuccess: true });
+
+    let message = this.copyMessage;
+    message.innerHTML = "Copied!";
+    setInterval(function() {
+      message.innerHTML = "Click to Copy";
+    }, 2000);
+  };
+
   render() {
     return (
       <div className="Joke">
         <div className="Joke-buttons">
           <FontAwesomeIcon
-            className="fa-arrow"
+            className="fa-arrow-up"
             icon={faArrowUp}
             onClick={this.props.upvote}
           />
@@ -55,12 +79,24 @@ class Joke extends React.Component {
             {this.props.votes}
           </span>
           <FontAwesomeIcon
-            className="fa-arrow"
+            className="fa-arrow-down"
             icon={faArrowDown}
             onClick={this.props.downvote}
           />
         </div>
-        <div className="Joke-text">{this.props.text}</div>
+        <div
+          className="Joke-text tooltip"
+          ref={textdiv => (this.textDiv = textdiv)}
+          onClick={() => this.copyTextToClipboard()}
+        >
+          {this.props.text}
+          <span
+            className="tooltiptext"
+            ref={message => (this.copyMessage = message)}
+          >
+            Click to Copy
+          </span>
+        </div>
         <div className="Joke-smiley">
           <i
             className={this.getEmoji()}
