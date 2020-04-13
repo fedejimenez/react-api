@@ -24,11 +24,12 @@ class JokeList extends React.Component {
     if (this.state.jokes.length === 0) {
       this.getJokes();
     }
+    this.sortJokes();
   }
 
   async getJokes() {
     try {
-      const url = "https://icanhazdadjoke.com/ffd";
+      const url = "https://icanhazdadjoke.com/";
       const headers = {
         Accept: "application/json"
       };
@@ -55,6 +56,7 @@ class JokeList extends React.Component {
       );
       this.setState({ loading: false });
     }
+    this.sortJokes();
   }
 
   handleVote(id, delta) {
@@ -73,6 +75,13 @@ class JokeList extends React.Component {
     this.setState({ loading: true }, this.getJokes);
   }
 
+  sortJokes() {
+    let jokes = this.state.jokes.sort((a, b) => b.votes - a.votes);
+    this.setState({
+      jokes: jokes
+    });
+  }
+
   render() {
     if (this.state.loading) {
       return (
@@ -82,6 +91,7 @@ class JokeList extends React.Component {
         </div>
       );
     }
+    // let jokes = this.state.jokes.sort((a, b) => b.votes - a.votes);
     return (
       <div className="JokeList">
         <div className="JokeList-sidebar">
