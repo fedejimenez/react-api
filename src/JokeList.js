@@ -8,14 +8,20 @@ class JokeList extends React.Component {
   constructor() {
     super();
     this.state = {
-      jokes: []
+      jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]")
     };
   }
   static defaultProps = {
     numJokesToGet: 10
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    if (this.state.jokes.length === 0) {
+      this.getJokes();
+    }
+  }
+
+  async getJokes() {
     const url = "https://icanhazdadjoke.com/";
     const headers = {
       Accept: "application/json"
@@ -26,8 +32,8 @@ class JokeList extends React.Component {
       jokes.push({ id: uuid(), text: res.data.joke, votes: 0 });
     }
     this.setState({ jokes: jokes });
+    window.localStorage.setItem("jokes", JSON.stringify(jokes));
   }
-
   handleVote(id, delta) {
     this.setState(st => ({
       jokes: st.jokes.map(joke =>

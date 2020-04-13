@@ -63,8 +63,7 @@ class Joke extends React.Component {
         <div className="Joke-text">{this.props.text}</div>
         <div className="Joke-smiley">
           <i
-            class={this.getEmoji()}
-            aria-role="presentation"
+            className={this.getEmoji()}
             aria-label="ROLLING ON THE FLOOR LAUGHING"
           ></i>
         </div>
