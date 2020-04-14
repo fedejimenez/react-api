@@ -239,6 +239,19 @@
 
 /* Mobile */
 
+@media (max-width: 500px) {
+  .JokeList-sidebar img {
+    display: none;
+  }
+}
+@media (min-width: 500px) and (max-width: 768px) {
+  .JokeList-sidebar img {
+    width: 10%;
+    border-radius: 50%;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @media (max-width: 768px) {
   .JokeList {
     display: block;
@@ -274,9 +287,6 @@
     letter-spacing: 0;
   }
 
-  .JokeList-sidebar img {
-    display: none;
-  }
   .JokeList-sidebar img:hover {
     animation-name: shake-slow;
     animation-duration: 5s;
