@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d6c1e3b9323d50b230b041426614e1d5",
+    "revision": "98bf750ef05185231921ff559c2c2fef",
     "url": "/react-jokes/index.html"
   },
   {
-    "revision": "1e29c6839ab6cd622cd0",
-    "url": "/react-jokes/static/css/main.40dcae2c.chunk.css"
+    "revision": "4c5180ac2e8add7e9661",
+    "url": "/react-jokes/static/css/main.e7df307d.chunk.css"
   },
   {
     "revision": "da2ad7094c7023640a31",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-jokes/static/js/2.175cc416.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1e29c6839ab6cd622cd0",
+    "revision": "4c5180ac2e8add7e9661",
     "url": "/react-jokes/static/js/main.e1923868.chunk.js"
   },
   {
