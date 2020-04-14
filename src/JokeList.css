@@ -249,6 +249,9 @@
   .JokeList-title {
     font-size: 1.5rem;
   }
+  .JokeList-spinner {
+    padding-top: 50%;
+  }
 }
 @media (min-width: 500px) and (max-width: 768px) {
   .JokeList-sidebar img {
@@ -263,6 +266,10 @@
   }
   .JokeList-title {
     font-size: 1.5rem;
+  }
+
+  .JokeList-spinner {
+    padding-top: 15%;
   }
 }
 
@@ -341,7 +348,6 @@
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
   }
   .JokeList-spinner {
-    padding-top: 50%;
     color: #9575cd;
     text-align: center;
   }
